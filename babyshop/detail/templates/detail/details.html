@@ -239,24 +239,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li>Product Name</li>
 						<div class="clear"> </div>
 					</ul>
-				  <div class="product-details">	
+				<div class="product-details">	
 					<div class="grid images_3_of_2">
-							<!-- start product_slider -->
-				    <div class="flexslider">
-					  <ul class="slides">
-						<li data-thumb="{% static 'images/preview-small-img1.png' %}">
-							<div class="thumb-image"> <img src="{% static 'images/preview-large-img1.jpg' %}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-						</li>
-						<li data-thumb="{% static 'images/preview-small-img2.png' %}">
-							 <div class="thumb-image"> <img src="{% static 'images/preview-large-img2.jpg' %}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-						</li>
-						<li data-thumb="{% static 'images/preview-small-img3.png' %}">
-						   <div class="thumb-image"> <img src="{% static 'images/preview-large-img3.jpg' %}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-						</li> 
-					   </ul>
-					</div>
-					<!-- end product_slider -->
-				     </div>
+						<!-- start product_slider -->
+						{% if goodie.main_image %}
+							<img src="{% static 'images/preview-large-img1.jpg' %}" />
+						{% else %}
+							<img src="http://placehold.it/500x500" />
+						{% endif %}
+<!-- Slider
+						<div class="flexslider">
+							<ul class="slides">
+								<li data-thumb="{% static 'images/preview-small-img1.png' %}">
+									<div class="thumb-image"> <img src="{% static 'images/preview-large-img1.jpg' %}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+								</li>
+								<li data-thumb="{% static 'images/preview-small-img2.png' %}">
+									 <div class="thumb-image"> <img src="{% static 'images/preview-large-img2.jpg' %}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+								</li>
+								<li data-thumb="{% static 'images/preview-small-img3.png' %}">
+								   <div class="thumb-image"> <img src="{% static 'images/preview-large-img3.jpg' %}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+								</li> 
+							</ul>
+						</div>
+-->
+						<!-- end product_slider -->
+				</div>
 				   <div class="desc span_3_of_2">
 					<h2>{{ goodie.name }}</h2>
 					<p>{{ goodie.description }}</p>
