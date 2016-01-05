@@ -55,3 +55,9 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Secrets ;)
+secret.py
+
+# Pictures, Images, etc.
+images/
