@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 from secret import DJANGO_SECRET_KEY, db_name, db_user, db_password
+from .env_type import ENV_TYPE
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,9 +25,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if ENV_TYPE == 'PROD':
+	DEBUG = True
+elif ENV_TYPE == 'DEVEL':
+	DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['77.246.158.54', '127.0.0.1',]
 
 
 # Application definition
@@ -133,3 +137,16 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = '/home/zeglor/Documents/babyshop/media/'
 MEDIA_URL = '/media/'
+
+# Tell browsers not to guess content type
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+SECURE_BROWSER_XSS_FILTER = True
+
+# Dont redirect all http requests to https
+SECURE_SSL_REDIRECT = False
+
+# Dont use https-only cookie since we dont use https
+SESSION_COOKIE_SECURE = False
+
+X_FRAME_OPTIONS = 'DENY'

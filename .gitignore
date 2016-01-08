@@ -58,6 +58,7 @@ target/
 
 # Secrets ;)
 secret.py
+env_type.py
 
 # Pictures, Images, etc.
 images/
