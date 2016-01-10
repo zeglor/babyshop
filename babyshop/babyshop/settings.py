@@ -26,9 +26,9 @@ SECRET_KEY = DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if ENV_TYPE == 'PROD':
-	DEBUG = True
-elif ENV_TYPE == 'DEVEL':
 	DEBUG = False
+elif ENV_TYPE == 'DEVEL':
+	DEBUG = True
 
 ALLOWED_HOSTS = ['77.246.158.54', '127.0.0.1',]
 
