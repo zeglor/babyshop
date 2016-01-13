@@ -8,9 +8,9 @@
 				<div class="section group">
 					<div class="cont-desc span_1_of_2">
 						<ul class="back-links">
-							<li><a href="#">Home</a> ::</li>
-							<li><a href="#">Product Page</a> ::</li>
-							<li>Product Name</li>
+							<li><a href="{% url 'index' %}">Главная</a> ::</li>
+							<li><a href="{% url 'details' goodie.pk %}">Страница продукта</a> ::</li>
+							<li>{{ goodie.name }}</li>
 							<div class="clear"> </div>
 						</ul>
 					</div>
