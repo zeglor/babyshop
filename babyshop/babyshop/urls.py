@@ -23,7 +23,7 @@ urlpatterns = [
 	url(r'^detail/', include('detail.urls')),
 	url(r'^cart/', include('cart.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', include('main.urls')),
+    url(r'^', include('main.urls')),
 ]
 
 if settings.DEBUG == True:

@@ -63,6 +63,7 @@ env_type.py
 # Pictures, Images, etc.
 images/
 media/
+static/
 
 # To do lists
 todo.txt

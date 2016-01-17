@@ -328,7 +328,7 @@ body {
 	width:30px;
 	height:30px;
 	text-align:center;
-	background:#e44f2b url("../images/arrows.png") no-repeat;
+	background:#e44f2b url("/static/images/arrows.png") no-repeat;
 	border-radius:2em;
 	-webkit-border-radius:2em;
 	-moz-border-radius:2em;
