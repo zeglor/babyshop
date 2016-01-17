@@ -5,6 +5,12 @@ Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
+
+Blocks defined:
+head_load - Piece in the middle of <head></head> block. Should be used if any additional script/css files are needed
+document_ready - Piece in top of $(document).ready js function. Should be used for additional js setup
+main_content - Piece between header and footer. Put your main page code here
+
 -->
 <!DOCTYPE HTML>
 <head>
@@ -18,9 +24,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script type="text/javascript" src="{% static '/static/js/easing.js' %}"></script>
 	<script type="text/javascript" src="{% static '/static/js/move-top.js' %}"></script>
 	<script src="{% static '/static/js/easyResponsiveTabs.js' %}" type="text/javascript"></script>
+	{% block head_load %}
+	{% endblock %}
 	<link href="{% static '/static/css/easy-responsive-tabs.css' %}" rel="stylesheet" type="text/css" media="all"/>
 	<script type="text/javascript">
     $(document).ready(function () {
+		{% block document_ready %}
+		{% endblock %}
         $('#horizontalTab').easyResponsiveTabs({
             type: 'default', //Types: default, vertical, accordion           
             width: 'auto', //auto or any width like 600px

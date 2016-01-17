@@ -2,6 +2,37 @@
 
 {% load staticfiles %}
 
+{% block head_load %}
+	<!--
+	Load js to manage cart asyncronously
+	-->
+	<script type="text/javascript" src="{% static 'cart/js/cart.js' %}"></script>
+{% endblock %}
+
+{% block document_ready %}
+		// Determines needed variables and calls add_to_cart
+		function add_to_cart_concrete(){
+			// cart_url and goodie_id are set by django backend
+			cart_url = "{% url 'add_to_cart_async' %}";
+			goodie_id = {{ goodie.pk }};
+			// Quantity is set by user in corresponding field
+			goodie_quantity = $("#cart_quantity").val();
+			
+			add_to_cart(cart_url, goodie_id, goodie_quantity);
+		}
+		// Setup csrf for ajax
+		$.ajaxSetup({
+			beforeSend: function(xhr, settings){
+				if (!csrfSafeMethod(settings.type) && !this.crossDomain){
+					xhr.setRequestHeader("X-CSRFToken", csrftoken);
+				}
+			}
+		});
+		
+		// Bind cart add function to appropriate button
+		$("#add_to_cart").click(function(){add_to_cart_concrete();});
+{% endblock %}
+
 {% block main_content %}
 		<div class="wrap">
 			<div class="preview-page">
@@ -55,9 +86,13 @@
 						</div>
 						<div class="share-desc">
 							<div class="share">
-								<p>Number of units :</p><input type="number" class="text_box" type="text" value="1" min="1" />
+								<p>Number of units :</p><input type="number" id="cart_quantity" class="text_box" type="text" value="1" min="1" />
 							</div>
-							<div class="button"><span><a href="#">Добавить в корзину</a></span></div>
+							<div class="button" id="add_to_cart">
+								<span>
+									<a href="#!">Добавить в корзину</a>
+								</span>
+							</div>
 							<div class="clear"></div>
 						</div>
 	<!--!! Wishlist and compare
